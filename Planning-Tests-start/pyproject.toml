@@ -1,0 +1,19 @@
+[project]
+name = "team-task-triage-board"
+version = "0.1.0"
+description = "Flask task-management starter app for Build AI Agents with OpenAI Codex"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "Flask>=3.0,<4.0",
+    "Flask-SQLAlchemy>=3.1,<4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

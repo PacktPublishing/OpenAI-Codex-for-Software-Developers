@@ -1,0 +1,35 @@
+[
+  {
+    "title": "Draft Windows setup verification",
+    "description": "Confirm the commands a Windows attendee runs before class.",
+    "owner": "Avery",
+    "status": "todo",
+    "priority": "urgent",
+    "notes": "Needs Python, Git, and Codex checks."
+  },
+  {
+    "title": "Add blocked-task filter",
+    "description": "Let users focus on tasks that need instructor attention.",
+    "owner": "Jordan",
+    "status": "doing",
+    "priority": "high",
+    "notes": ""
+  },
+  {
+    "title": "Review generated route changes",
+    "description": "Create a short checklist for route and template diffs.",
+    "owner": "Sam",
+    "status": "blocked",
+    "priority": "medium",
+    "notes": "Waiting on rubric language."
+  },
+  {
+    "title": "Prepare capstone handoff prompt",
+    "description": "Ask Codex to summarize what changed, tests run, and risks.",
+    "owner": "Mina",
+    "status": "done",
+    "priority": "low",
+    "notes": "First draft is ready."
+  }
+]
+

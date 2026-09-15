@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class="toolbar" aria-label="Task filters">
+    <form method="get">
+      <label>
+        Status
+        <select name="status">
+          <option value="">All</option>
+          {% for status in statuses %}
+            <option value="{{ status }}" {% if selected_status == status %}selected{% endif %}>
+              {{ status }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <label>
+        Priority
+        <select name="priority">
+          <option value="">All</option>
+          {% for priority in priorities %}
+            <option value="{{ priority }}" {% if selected_priority == priority %}selected{% endif %}>
+              {{ priority }}
+            </option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <button type="submit">Apply</button>
+      <a href="{{ url_for('tasks.index') }}">Clear</a>
+    </form>
+  </section>
+
+  <section class="task-grid" aria-label="Tasks">
+    {% for task in tasks %}
+      <article class="task-card priority-{{ task.priority }}">
+        <div class="task-card-header">
+          <h2>{{ task.title }}</h2>
+          <span>{{ task.priority }}</span>
+        </div>
+        <p>{{ task.description }}</p>
+        <dl>
+          <div>
+            <dt>Owner</dt>
+            <dd>{{ task.owner }}</dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd>{{ task.status }}</dd>
+          </div>
+        </dl>
+
+        {% if task.notes %}
+          <pre class="notes">{{ task.notes }}</pre>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('tasks.change_status', task_id=task.id) }}">
+          <label>
+            Update status
+            <select name="status">
+              {% for status in statuses %}
+                <option value="{{ status }}" {% if task.status == status %}selected{% endif %}>
+                  {{ status }}
+                </option>
+              {% endfor %}
+            </select>
+          </label>
+          <button type="submit">Save</button>
+        </form>
+
+        <form method="post" action="{{ url_for('tasks.create_note', task_id=task.id) }}">
+          <label>
+            Add note
+            <textarea name="note" rows="2"></textarea>
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </article>
+    {% else %}
+      <p>No tasks match the current filters.</p>
+    {% endfor %}
+  </section>
+{% endblock %}
+
