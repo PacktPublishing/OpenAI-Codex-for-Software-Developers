@@ -11,7 +11,7 @@ MarkupSafe==3.0.3
 packaging==26.2
 pluggy==1.6.0
 Pygments==2.20.0
-pytest==8.4.2
+pytest==9.0.3
 ruff==0.15.22
 SQLAlchemy==2.0.51
 typing_extensions==4.16.0
